@@ -91,7 +91,6 @@ img.grayscale {
 	background-color:#d46054;
 }
 
-
 .header h1 {
 	font-size:80px;
 	-webkit-text-stroke: 1px rgba(f,f,f,0.1);
@@ -130,10 +129,8 @@ img.grayscale {
 	background-color:#5D17BA;
 }
 
-
-
 .blurb {
-	padding: 120px 0;
+	padding: 50px 0;
 	background-color:#fefefe;
 }
 
@@ -150,6 +147,10 @@ img.grayscale {
 	background: #db1f20;
 	padding: 50px 0;
 	color: #ffffff;
+}
+
+.elec {
+  background: #222334;
 }
 
 .featurette-item {
@@ -177,15 +178,29 @@ img.grayscale {
 	padding-top:7%;
 	height: 100%;
 	width: 100%;
-	background: url('../img/bg_suburb.jpg') no-repeat center center fixed; 
+	/*background: url('../img/bg_suburb.jpg') no-repeat center center fixed; */
+  background: url('../img/logo_flashback.png') no-repeat center center fixed; 
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
 }
 
+.callout h1 {
+  color: #222334;
+}
+
 .gallery {
 	padding: 50px 0;
+
+}
+
+.gallery h1 {
+  color: #222334;
+}
+
+.part h1 {
+  color: #222334;
 }
 
 .call-to-action {
@@ -212,7 +227,7 @@ footer {
 .fillette {
 	color: #ffffff;
 	padding-top:0%;
-	//height: 100%;
+	/*height: 100%;*/
 	width: 100%;
 	background: url('../img/slider/1.jpg') no-repeat center center fixed; 
 	-webkit-background-size: cover;
