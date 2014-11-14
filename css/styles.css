@@ -253,7 +253,8 @@ footer {
 	-webkit-transform: translateZ(0);
 	transform: translateZ(0);
 	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-	height: 150px;
+	height: 120px;
+	width: auto;
 }
 .push:hover img{
 	-webkit-animation-name: push;
