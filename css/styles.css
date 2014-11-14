@@ -266,13 +266,6 @@ footer {
 	animation-iteration-count: 1;
 }
 
-.helper {
-	display: inline-block;
-	height: 100%;
-	vertical-align: middle;
-}
-
 .timer_box {
 	border-color: rgba(255,255,255,1)!important;
-	background-color: rgba(0, 0, 0, 0.2);
 }
