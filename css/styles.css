@@ -220,7 +220,12 @@ img.grayscale {
 .oeno {
   width: 50px;
   display: inline-block;
-  height: 100%;
+  vertical-align: middle;
+}
+
+.teemid {
+  width: 150px;
+  display: inline-block;
   vertical-align: middle;
 }
 
