@@ -175,10 +175,8 @@ img.grayscale {
 
 .callout {
   color: #ffffff;
-  padding-top:7%;
-  height: 100%;
+  padding: 50px 0;
   width: 100%;
-  /*background: url('../img/bg_suburb.jpg') no-repeat center center fixed; */
   background: url('../img/logo_flashback.png') no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -219,6 +217,13 @@ img.grayscale {
   vertical-align: middle;
 }
 
+.oeno {
+  width: 50px;
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+
 footer {
   padding: 20px 0;
   font-size: 8;
@@ -234,6 +239,12 @@ footer {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+}
+
+.darkback {
+  background-color: rgba(186, 186, 184, 0.5);
+  border-radius: 5px;
+  padding: 20px;
 }
 
 .img-top {
