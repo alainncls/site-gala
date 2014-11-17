@@ -271,6 +271,11 @@ a.span-vote {
   text-decoration: none!important;
 }
 
+.buy {
+  background-color: #fff;
+  border-radius: 10px;
+}
+
 /* -- end custom css for Bootstrap 3.x --*/
 
 /* Push */
