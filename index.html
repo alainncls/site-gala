@@ -62,76 +62,83 @@
 	</div>
 
 	<div class="gallery" id="programme">
-
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3 text-center">
 				<h1>Programme de la soirée</h1>
 				<br>
 			</div>
 		</div>
-
 		<div class="container well well-lg">
 			<div class="row">
 				<div class="col-sm-3">
-					<div class="list-group" align="center">
-						<a href="#animations" data-toggle="collapse" class="list-group-item">Animations</a>
+					<div class="list-group"  style="margin-bottom:0;" align="center">
+						<a href="#collapseOne" data-toggle="collapse" class="list-group-item" data-parent="#accordion" aria-expanded="true" aria-controls="collapseOne">Animations</a>
 					</div>
 				</div>
 				<div class="col-sm-3" align="center">
-					<div class="list-group">
-						<a href="#musique" data-toggle="collapse" class="list-group-item">Musique</a>
+					<div class="list-group"  style="margin-bottom:0;">
+						<a href="#collapseTwo" data-toggle="collapse" class="list-group-item" data-parent="#accordion" aria-expanded="true" aria-controls="collapseTwo">Musique</a>
 					</div>
 				</div>
 				<div class="col-sm-3" align="center">
-					<div class="list-group">
-						<a href="#bars" data-toggle="collapse" class="list-group-item">Bars</a>
+					<div class="list-group"  style="margin-bottom:0;">
+						<a href="#collapseThree" data-toggle="collapse" class="list-group-item" data-parent="#accordion" aria-expanded="true" aria-controls="collapseThree">Bars</a>
 					</div>
 				</div>
 				<div class="col-sm-3" align="center">
-					<div class="list-group">
-						<a href="#vip" data-toggle="collapse" class="list-group-item">VIP</a>
+					<div class="list-group"  style="margin-bottom:0;">
+						<a href="#collapseFour" data-toggle="collapse" class="list-group-item" data-parent="#accordion" aria-expanded="true" aria-controls="collapseFour">VIP</a>
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-12">
-				<div id="animations" class="list-group panel-collapse collapse">
-					<h2>Bar à champagne <a href="http://oenologie.epf.fr" target="_blank"><img class="oeno pull-right" src="img/partenaires/oenologie.png"></a></h2>
-					<p>Pour commencer, EPF Œnologie proposera un Bar à Bulles ou vous pourrez déguster du champagne Marquis de Sade.</p>
-					<h2>Défilé</h2>
-					<p>Entre 00h et 00h30 ce sera l’heure du traditionnel défilé. 13 mannequins de l’école défileront devant vous. Vous pourrez admirer les robes de Danoeli, créatrice de robes d'exception conçues spécialement pour l'occasion !</p>
-					<h2>Remise d’Oscars</h2>
-					<p>Cette année nous mettons à l’honneur la promotion 2014 pour leurs derniers moments à l’EPF. Ce sera l'occasion de découvrir ou redécouvrir la Promotion sortante de cette année à travers une activité surprenante et pleine de surprises</p>
-					<h2>Roi et Reine</h2>
-					<p>Après deux semaines de compétition, seuls les deux couples ayant eu le plus grand succès auront la possibilité de défendre leurs chances pour le titre de Roi et Reine. Chacun des couples défilera et vous aurez l’occasion de soutenir votre favori ! Les élus se verront offrir une bouteille de champagne.</p>
-				</div>
-			</div>
-			<div class="col-sm-12">
-				<div id="musique" class="list-group panel-collapse collapse">
-					<h2>DJ Guest  <a href="https://www.facebook.com/teemid" target="_blank"><img class="teemid pull-right" src="img/teemid.png"></a></h2>
-					<p>Cette année, nous accueillons TEEMID : un DJ de la scène montante de Deephouse qui se produit notamment au Yoyo à Paris. Il possède un large répertoire d'inspiration, de nombreux d'artistes allant de Kerry Chandler à Bakermat et en passant par Disclosure.</p>
-					<h2>DJ Peufiens</h2>
-					<p>Il sera également accompagné d’artistes survoltés de notre chère école : MMC de Troyes, Calixte Leduc, et Alex S.</p>
-				</div>
-			</div>
-			<div class="col-sm-12">
-				<div id="bars" class="list-group panel-collapse collapse">
-					<h1>3 bars seront à la disposition des invités !<h1>
-						<h2> Et il y en aura pour tous les goûts :</h2>
-						<h3>Bar principal</h3>
-						<p>Il proposera les cocktails suivants : Blue Lagoon, Mojito, Tequila sunrise et du Champagne Maison de Sade (cocktails 3€, champagne 4€)</p>
-						<h3>Bar à shots</h3>
-						<p>Vous aurez l’occasion de goûter à 13 parfums variés, aux goûts étonnants. Venez tenter l’expérience ! (2€)</p>
-						<h3>Candy Bar</h3>
-						<p>Un large choix de gourmandises et de compositions alléchantes vous sera OFFERT tout le long de la soirée.</p>
+			<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true" style="margin-bottom:0;">
+				<div class="panel panel-default" style="border:0; background-color:#f5f5f5;">
+					<div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+						<div class="panel-body">
+							<h2>Bar à champagne <a href="http://oenologie.epf.fr" target="_blank"><img class="oeno pull-right" src="img/partenaires/oenologie.png"></a></h2>
+							<p>Pour commencer, EPF Œnologie proposera un Bar à Bulles ou vous pourrez déguster du champagne Marquis de Sade.</p>
+							<h2>Défilé</h2>
+							<p>Entre 00h et 00h30 ce sera l’heure du traditionnel défilé. 13 mannequins de l’école défileront devant vous. Vous pourrez admirer les robes de Danoeli, créatrice de robes d'exception conçues spécialement pour l'occasion !</p>
+							<h2>Remise d’Oscars</h2>
+							<p>Cette année nous mettons à l’honneur la promotion 2014 pour leurs derniers moments à l’EPF. Ce sera l'occasion de découvrir ou redécouvrir la Promotion sortante de cette année à travers une activité surprenante et pleine de surprises</p>
+							<h2>Roi et Reine</h2>
+							<p>Après deux semaines de compétition, seuls les deux couples ayant eu le plus grand succès auront la possibilité de défendre leurs chances pour le titre de Roi et Reine. Chacun des couples défilera et vous aurez l’occasion de soutenir votre favori ! Les élus se verront offrir une bouteille de champagne.</p>
+						</div>
 					</div>
 				</div>
-				<div class="col-sm-12">
-					<div id="vip" class="list-group panel-collapse collapse">
-						<h2>VIP</h2>
-						<p>Le carré VIP permet d’avoir accès à des avantages exclusifs, le tout dans un espace réservé depuis lequel vous aurez une vue d’ensemble de la soirée.</p>
-						<h2>En exclusivité</h2>
-						<p>Une bouteille de champagne + une bouteille de hard au choix + un buffet. Des masseurs et un hypnotiseur seront présents pendant de la soirée !</p>
-					</p>
+				<div class="panel panel-default" style="border:0; background-color:#f5f5f5;">
+					<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+						<div class="panel-body">
+							<h2>DJ Guest  <a href="https://www.facebook.com/teemid" target="_blank"><img class="teemid pull-right" src="img/teemid.png"></a></h2>
+							<p>Cette année, nous accueillons TEEMID : un DJ de la scène montante de Deephouse qui se produit notamment au Yoyo à Paris. Il possède un large répertoire d'inspiration, de nombreux d'artistes allant de Kerry Chandler à Bakermat et en passant par Disclosure.</p>
+							<h2>DJ Peufiens</h2>
+							<p>Il sera également accompagné d’artistes survoltés de notre chère école : MMC de Troyes, Calixte Leduc, et Alex S.</p>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-default" style="border:0; background-color:#f5f5f5;">
+					<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+						<div class="panel-body">
+							<h1>3 bars seront à la disposition des invités !</h1>
+							<h2> Et il y en aura pour tous les goûts :</h2>
+							<h3>Bar principal</h3>
+							<p>Il proposera les cocktails suivants : Blue Lagoon, Mojito, Tequila sunrise et du Champagne Maison de Sade (cocktails 3€, champagne 4€)</p>
+							<h3>Bar à shots</h3>
+							<p>Vous aurez l’occasion de goûter à 13 parfums variés, aux goûts étonnants. Venez tenter l’expérience ! (2€)</p>
+							<h3>Candy Bar</h3>
+							<p>Un large choix de gourmandises et de compositions alléchantes vous sera OFFERT tout le long de la soirée.</p>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-default" style="border:0; background-color:#f5f5f5;">
+					<div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+						<div class="panel-body">
+							<h2>VIP</h2>
+							<p>Le carré VIP permet d’avoir accès à des avantages exclusifs, le tout dans un espace réservé depuis lequel vous aurez une vue d’ensemble de la soirée.</p>
+							<h2>En exclusivité</h2>
+							<p>Une bouteille de champagne + une bouteille de hard au choix + un buffet. Des masseurs et un hypnotiseur seront présents pendant de la soirée !</p>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
