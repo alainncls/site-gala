@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /2013
+Disallow: /2014
