@@ -82,7 +82,7 @@ require_once('header.php');
 				<form action="" method="POST" role="form" enctype="multipart/form-data">
 					<div class="form-group">
 						<label for="name">Nom</label>
-						<input value="<?php if(isset($candidat)) echo $candidat['nom']; ?>" type="text" class="form-control" id="name" name="nom" required/>
+						<input value="<?php if(isset($candidat)) echo $candidat['nom']; ?>" type="text" class="form-control" id="name" name="nom" required autofocus/>
 					</div>
 					<div class="form-group">
 						<label>Avatar</label>

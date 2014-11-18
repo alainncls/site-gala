@@ -3,37 +3,28 @@
 require_once('include/config-bdd.php');
 
 //Check that the form has been posted.
-if (isset($_POST["vote"]) {
+if (isset($_POST["candidat"])) {
 
-	$verification = false;
 	$requeteVerif = $bdd->prepare(
 		"SELECT *
 		FROM `vote`
-		WHERE `ip` = :ip");
-	$requeteVerif->execute(array(':ip'=>$_SERVER['REMOTE_ADDR']));
-	$verif = $requeteVerif->fetch(PDO::FETCH_ASSOC);
-	if($verif) {
-		$requeteVerif = $bdd->prepare(
-			"SELECT *
-			FROM `vote`
-			WHERE `ip` = :ip
-			AND DATEDIFF(`time`, NOW() ) >= 1");
-		$requeteVerif->execute(array(':ip'=>$_SERVER['REMOTE_ADDR']));
-		$verif = $requeteVerif->fetch(PDO::FETCH_ASSOC);
-		if($verif) {
-			$verification=true;
-		}
-	}
-
+		WHERE id_categorie = :categorie
+		AND ip = :ip
+		AND DATEDIFF(NOW(), `time`) < 1");
+	$result = $requeteVerif->fetch(PDO::FETCH_ASSOC);
+	
 	//Does the vote pass both test? If so, insert the vote into the database.
-	if($verification) {
+	if(!$result) {
 		$requeteVote = $bdd->prepare(
-			"INSERT INTO `vote` (`ip`, `id_candidat`)
-			VALUES (:ip, :id_candidat)");
+			"INSERT INTO `vote` (`ip`, `id_candidat`, `id_categorie`)
+			VALUES (:ip, :id_candidat, :id_categorie)");
 		$requeteVote->execute(array(
 			':ip'=>$_SERVER['REMOTE_ADDR'],
-			':id_candidat'=>$_POST['vote']));
+			':id_candidat'=>$_POST['candidat'],
+			':id_categorie'=>$_POST['categorie']));
 	}
 }
+
+header('Location: indexbis.php#elections');
 
 ?>
