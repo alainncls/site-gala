@@ -11,6 +11,9 @@ if (isset($_POST["candidat"])) {
 		WHERE id_categorie = :categorie
 		AND ip = :ip
 		AND DATEDIFF(NOW(), `time`) < 1");
+	$requeteVerif->execute(array(
+		':categorie'=>$_POST['categorie'],
+		':ip'=>$_SERVER['REMOTE_ADDR']));
 	$result = $requeteVerif->fetch(PDO::FETCH_ASSOC);
 	
 	//Does the vote pass both test? If so, insert the vote into the database.
