@@ -89,7 +89,7 @@
 		</div>
 	</div>
 
-	<div class="gallery" id="programme">
+	<div class="gallery prog" id="programme">
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3 text-center">
 				<h1>Programme de la soirée</h1>
