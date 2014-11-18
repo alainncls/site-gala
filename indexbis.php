@@ -335,7 +335,7 @@
 								<?php foreach ($candidats as $candidat) : ?>
 									<div class="col-md-2 text-center">
 										<div class="featurette-item">
-											<img class="img-circle grayscale" src="img/candidats/<?php echo $candidat['avatar']; ?>" />
+											<img class="img-circle grayscale" src="img/candidats/<?php echo $candidat['avatar']; ?>" width="150px" height="150px" />
 											<h4><?php echo $candidat['nom']; ?></h4>
 											Score: <?php echo $candidat['nbVote']; ?>
 											<?php 

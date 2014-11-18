@@ -49,12 +49,12 @@ require_once('header.php');
 						<?php foreach ($candidats as $candidat) : ?>
 							<tr>
 								<td><img src="../img/candidats/<?php echo $candidat['avatar'].'?dummy='.time(); ?>" width="100px" height="100px" /></td>
-								<td><?php echo $candidat['nom']?></td>
+								<td><?php echo $candidat['nom']; ?></td>
 								<td align="right">
-									<button type="submit" form="candidatEdit" value="<?php echo $candidat['id']?>" class="btn btn-warning btn-sm" name="edit" data-toggle="tooltip" data-placement="top" title="Modifier">
+									<button type="submit" form="candidatEdit" value="<?php echo $candidat['id']; ?>" class="btn btn-warning btn-sm" name="edit" data-toggle="tooltip" data-placement="top" title="Modifier">
 										<span class="glyphicon glyphicon-pencil"></span>
 									</button>
-									<button type="submit" form="candidatEdit" value="<?php echo $candidat['id']?>" class="btn btn-danger btn-sm" name="delete" data-toggle="tooltip" data-placement="top" title="Supprimer">
+									<button type="submit" form="candidatEdit" value="<?php echo $candidat['id']; ?>" class="btn btn-danger btn-sm" name="delete" data-toggle="tooltip" data-placement="top" title="Supprimer">
 										<span class="glyphicon glyphicon-trash"></span>
 									</button>
 								</td>
@@ -89,8 +89,8 @@ require_once('header.php');
 					<tbody>
 						<?php foreach ($categories as $categorie) : ?>
 							<tr>
-								<td><?php echo $categorie['nom']?></td>
-								<td><?php echo $categorie['nbVote']?></td>
+								<td><?php echo strip_tags($categorie['nom']); ?></td>
+								<td><?php echo $categorie['nbVote']; ?></td>
 								<td align="right">
 									<button type="submit" form="categorieEdit" value="<?php echo $categorie['id']; ?>" class="btn btn-warning btn-sm" name="edit" data-toggle="tooltip" data-placement="top" title="Modifier">
 										<span class="glyphicon glyphicon-pencil"></span>
