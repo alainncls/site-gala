@@ -13,17 +13,28 @@ $requete = $bdd->prepare(
 $requete->execute();
 $candidats = $requete->fetchAll(PDO::FETCH_ASSOC);
 
+$requete = $bdd->prepare(
+	"SELECT *, COUNT(v.id) AS nbVote, c.id
+	FROM `categorie` AS c
+	LEFT JOIN `vote` AS v
+	ON c.id = v.id_categorie
+	GROUP BY c.id");
+$requete->execute();
+$categories = $requete->fetchAll(PDO::FETCH_ASSOC);
+
 
 require_once('header.php');
 ?>
 <div class="row">
-	<div class="col-md-8 col-md-offset-2">
+	<div class="col-md-6">
 		<div class="panel panel-primary">
 			<div class="panel-heading">
-				<a href="candidat.php" class="btn btn-success btn-sm pull-right" name="add" data-toggle="tooltip" data-placement="bottom" title="Ajouter un candidat">
-					<span class="glyphicon glyphicon-plus"></span>
-				</a>
-				<h3 class="panel-title">Liste des Candidats</h3>
+				<h3 class="panel-title">
+					Liste des Candidats
+					<a href="candidat.php" class="btn btn-success btn-sm" name="add" data-toggle="tooltip" data-placement="bottom" title="Ajouter un candidat">
+						<span class="glyphicon glyphicon-plus"></span>
+					</a>
+				</h3>
 			</div>
 			<div class="table-responsive">
 				<table class="table table-hover">
@@ -54,6 +65,47 @@ require_once('header.php');
 			</div>
 		</div>
 		<form id="candidatEdit" action="candidat.php" method="POST" role="form"></form>
+	</div>
+
+	<div class="col-md-6">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3 class="panel-title">
+					Liste des Catégories
+					<a href="categorie.php" class="btn btn-success btn-sm" name="add" data-toggle="tooltip" data-placement="bottom" title="Ajouter un candidat">
+						<span class="glyphicon glyphicon-plus"></span>
+					</a>
+				</h3>
+			</div>
+			<div class="table-responsive">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>Nom</th>
+							<th>Nb_vote</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php foreach ($categories as $categorie) : ?>
+							<tr>
+								<td><?php echo $categorie['nom']?></td>
+								<td><?php echo $categorie['nbVote']?></td>
+								<td align="right">
+									<button type="submit" form="categorieEdit" value="<?php echo $categorie['id']; ?>" class="btn btn-warning btn-sm" name="edit" data-toggle="tooltip" data-placement="top" title="Modifier">
+										<span class="glyphicon glyphicon-pencil"></span>
+									</button>
+									<button type="submit" form="categorieEdit" value="<?php echo $categorie['id']; ?>" class="btn btn-danger btn-sm" name="delete" data-toggle="tooltip" data-placement="top" title="Supprimer">
+										<span class="glyphicon glyphicon-trash"></span>
+									</button>
+								</td>
+							</tr>
+						<?php endforeach; ?>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<form id="categorieEdit" action="categorie.php" method="POST" role="form"></form>
 	</div>
 </div>
 <?php
