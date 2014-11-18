@@ -53,7 +53,7 @@
          <li><a href="#places">Places</a></li>
          <li><a href="#partenaires">Partenaires</a></li>
          <li><a href="#infos">Infos pratiques</a></li>
-         <!-- <li><a href="#elections">Elections 6A</a></li> -->
+         <li><a href="#elections">Elections 6A</a></li>
          <li><a href="#contact">Contact</a></li>
        </ul>
      </div>
@@ -275,134 +275,87 @@
  </div>
 </div>
 
-<!-- 
-<div class="featurette elec" id="elections">
-  <div class="container">
-   <div class="row">
-    <div class="col-md-12 text-center">
-     <h1>Election des diplomés</h1>
-     <h2>Les catégories</h2>
-   </div>
- </div>
- <div class="row">
-  <div class="col-md-2 text-center">
-   <div class="featurette-item">
-    <i class="fa fa-question"></i>
-    <h4>Le (la) plus <br>sexy</h4>
-    <a href="#sexy" data-toggle="collapse" class="span-vote">Afficher</a>
-  </div>
-</div>
-<div class="col-md-2 text-center">
- <div class="featurette-item">
-  <i class="fa fa-question"></i>
-  <h4>Le (la) plus drôle</h4>
-  <a href="#drole" data-toggle="collapse" class="span-vote">Afficher</a>
-</div>
-</div>
-<div class="col-md-2 text-center">
- <div class="featurette-item">
-  <i class="fa fa-question"></i>
-  <h4>Le (la) plus studieux (-se)</h4>
-  <a href="#studieux" data-toggle="collapse" class="span-vote">Afficher</a>
-</div>
-</div>
-<div class="col-md-2 text-center">
- <div class="featurette-item">
-  <i class="fa fa-question"></i>
-  <h4>Le (la) plus populaire</h4>
-  <a href="#populaire" data-toggle="collapse" class="span-vote">Afficher</a>
-</div>
-</div>
-<div class="col-md-2 text-center">
- <div class="featurette-item">
-  <i class="fa fa-question"></i>
-  <h4>Le (la) plus fêtard(e)</h4>
-  <a href="#fetard" data-toggle="collapse" class="span-vote">Afficher</a>
-</div>
-</div>
-<div class="col-md-2 text-center">
- <div class="featurette-item">
-  <i class="fa fa-question"></i>
-  <h4>Le (la) plus associatif (-ve)</h4>
-  <a href="#associatif" data-toggle="collapse" class="span-vote">Afficher</a>
-</div>
-</div>
-</div>
+<?php
 
-<div class="col-sm-12" align="center">
-  <div id="sexy" class="list-group panel-collapse collapse">
-   <h2>Le (la) plus sexy</h2>
-   <div class="col-md-2 text-center">
-    <div class="featurette-item">
-     <img class="img-circle grayscale" src="http://api.randomuser.me/portraits/med/women/12.jpg">
-   </div>
- </div>
- <div class="col-md-2 text-center">
-  <div class="featurette-item">
-   <img class="img-circle grayscale" src="http://api.randomuser.me/portraits/med/women/12.jpg">
- </div>
-</div>
-<div class="col-md-2 text-center">
-  <div class="featurette-item">
-   <img class="img-circle grayscale" src="http://api.randomuser.me/portraits/med/women/12.jpg">
- </div>
-</div>
-<div class="col-md-2 text-center">
-  <div class="featurette-item">
-   <img class="img-circle grayscale" src="http://api.randomuser.me/portraits/med/women/12.jpg">
- </div>
-</div>
-<div class="col-md-2 text-center">
-  <div class="featurette-item">
-   <img class="img-circle grayscale" src="http://api.randomuser.me/portraits/med/women/12.jpg">
- </div>
-</div>
-<div class="col-md-2 text-center">
-  <div class="featurette-item">
-   <img class="img-circle grayscale" src="http://api.randomuser.me/portraits/med/women/12.jpg">
- </div>
-</div>
-</div>
-</div>
+	require_once('include/config-bdd.php');
 
-<div class="col-sm-12" align="center">
-  <div id="drole" class="list-group panel-collapse collapse">
-   <h2>Le (la) plus drôle</h2>
-   <p>drôle</p>
- </div>
-</div>
+	$requeteCandidats = $bdd->prepare(
+		"SELECT c.*, COUNT(v.id) AS nbVote
+		FROM `candidat` AS c
+		LEFT JOIN `vote` AS v
+		ON c.id = v.id_candidat
+		AND v.id_categorie = :categorie
+		GROUP BY c.id
+		ORDER BY nbVote DESC");
 
-<div class="col-sm-12" align="center">
-  <div id="studieux" class="list-group panel-collapse collapse">
-   <h2>Le (la) plus studieux (-se)</h2>
-   <p>studieux</p>
- </div>
-</div>
+	$requeteVote = $bdd->prepare(
+		"SELECT *
+		FROM `vote`
+		WHERE id_categorie = :categorie
+		AND ip = :ip
+		AND DATEDIFF(NOW(), `time`) < 1");
 
-<div class="col-sm-12" align="center">
-  <div id="populaire" class="list-group panel-collapse collapse">
-   <h2>Le (la) plus populaire</h2>
-   <p>populaire</p>
- </div>
-</div>
+	$requete = $bdd->prepare(
+		"SELECT *
+		FROM `categorie`");
+	$requete->execute();
+	$categories = $requete->fetchAll(PDO::FETCH_ASSOC);
 
-<div class="col-sm-12" align="center">
-  <div id="fetard" class="list-group panel-collapse collapse">
-   <h2>Le (la) plus fetard(e)</h2>
-   <p>fetard</p>
- </div>
-</div>
-
-<div class="col-sm-12" align="center">
-  <div id="associatif" class="list-group panel-collapse collapse">
-   <h2>Le (la) plus associatif (-ve)</h2>
-   <p>associatif</p>
- </div>
-</div>
-
-</div>
-</div>
--->
+	?>
+	<div class="featurette elec" id="elections">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<h1>Election des diplomés</h1>
+					<h2>Les catégories</h2>
+				</div>
+			</div>
+			<div class="row">
+				<?php foreach ($categories as $categorie) : ?>
+					<div class="col-md-2 text-center">
+						<div class="featurette-item">
+							<i class="fa fa-question"></i>
+							<h4><?php echo $categorie['nom']; ?></h4>
+							<a href="#collapseCat<?php echo $categorie['id']; ?>" data-toggle="collapse" class="span-vote" data-parent="#accordionVote" aria-expanded="true" aria-controls="collapseCat<?php echo $categorie['id']; ?>">Afficher</a>
+						</div>
+					</div>
+				<?php endforeach; ?>
+			</div>
+			<div class="col-sm-12" align="center">
+				<div class="panel-group" id="accordionVote" role="tablist" aria-multiselectable="true" style="margin-bottom:0;">
+					<?php foreach ($categories as $categorie) : ?>
+						<?php $requeteCandidats->execute(array(':categorie'=>$categorie['id'])); ?>
+						<?php $candidats = $requeteCandidats->fetchAll(PDO::FETCH_ASSOC); ?>
+						<div class="panel panel-default" style="border:0; background-color:transparent;">
+							<div id="collapseCat<?php echo $categorie['id']; ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingCat<?php echo $categorie['id']; ?>">
+								<div class="panel-body">
+									<h2><?php echo strip_tags($categorie['nom']); ?></h2>
+									<?php foreach ($candidats as $candidat) : ?>
+										<div class="col-md-2 text-center">
+											<div class="featurette-item">
+												<img class="img-circle grayscale" src="img/candidats/<?php echo $candidat['avatar']; ?>" width="150px" height="150px" />
+												<h4><?php echo $candidat['nom']; ?></h4>
+												Score: <?php echo $candidat['nbVote']; ?>
+												<?php $requeteVote->execute(array(':categorie'=>$categorie['id'], ':ip'=>$_SERVER['REMOTE_ADDR'])); ?>
+												<?php if($result = $requeteVote->fetch(PDO::FETCH_ASSOC)) : ?>
+													Déjà voté
+												<?php else : ?>
+													<form action="vote.php" method="POST" role="form">
+														<input type="hidden" name="categorie" value="<?php echo $categorie['id']; ?>" />
+														<button type="submit" name="candidat" value="<?php echo $candidat['id']?>" class="btn btn-info btn-xs">Voter</button>
+													</form>
+												<?php endif; ?>
+											</div>
+										</div>
+									<?php endforeach; ?>
+								</div>
+							</div>
+						</div>
+					<?php endforeach; ?>
+				</div>
+			</div>
+		</div>
+	</div>
 
 <div class="callout" id="contact">
   <div class="container">
