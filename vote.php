@@ -28,6 +28,6 @@ if (isset($_POST["candidat"])) {
 	}
 }
 
-header('Location: indexbis.php#elections');
+header('Location: index.php#elections');
 
 ?>
