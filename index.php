@@ -49,44 +49,56 @@
       </div>
       <div class="navbar-collapse collapse" id="navbar">
         <ul class="nav navbar-nav">
-         <li><a href="#programme">Programme</a></li>
-         <li><a href="#places">Places</a></li>
-         <li><a href="#partenaires">Partenaires</a></li>
-         <li><a href="#infos">Infos pratiques</a></li>
-         <li><a href="#elections">Elections 6A</a></li>
-         <li><a href="#contact">Contact</a></li>
-       </ul>
-     </div>
-   </div>
- </nav>
-
- <div class="blurb fillette" id="home">
-  <div class="container">
-   <section id="header">
-    <div id="page-content" class="container">
-    <img src="img/logo_gala.png" alt="Logo Gala" class="pull-left" width="20%">
-     <img src="img/logo_epf.jpg" alt="Logo EPF" class="pull-right" width="20%">
-     <header>
-      <h1 data-animated="GoIn">Le <b>65<sup>ème</sup> Gala EPF</b><br> c'est bientôt...</h1>
-    </header>
-    <div id="timer" data-animated="FadeIn">
-      <p id="message"></p>
-      <div id="days" class="timer_box"></div>
-      <div id="hours" class="timer_box"></div>
-      <div id="minutes" class="timer_box"></div>
-      <div id="seconds" class="timer_box"></div>
+          <li><a href="#teaser">Teaser</a></li>
+          <li><a href="#programme">Programme</a></li>
+          <li><a href="#places">Places</a></li>
+          <li><a href="#partenaires">Partenaires</a></li>
+          <li><a href="#infos">Infos pratiques</a></li>
+          <li><a href="#elections">Elections 6A</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="darkback">
-      <h3>Bonjour et bienvenue à toutes et à tous !</h3>
-      <p>Cette année, le Gala a décidé de se concentrer sur son école. Nous te concoctons une soirée dans laquelle tu pourras te replonger dans tes souvenirs : un retour dans les années peufiennes pour certains et un grand voyage vers l'enfance pour d'autres !</p>
-      <p>Nous t'attendons muni de ton plus bel apparat  pour cette 65<sup>ème</sup> édition du Gala EPF sur le thème "Flash Back".</p>
-      <p>Au programme, le traditionnel défilé des élèves, une remise d'oscars, des hypnotiseurs et bien sûr de la musique tout au long de la soirée !    </p>
+  </nav>
+
+  <div class="blurb fillette" id="home">
+    <div class="container">
+     <section id="header">
+      <div id="page-content" class="container">
+        <img src="img/logo_gala.png" alt="Logo Gala" class="pull-left" width="20%">
+        <img src="img/logo_epf.jpg" alt="Logo EPF" class="pull-right" width="20%">
+        <header>
+          <h1 data-animated="GoIn">Le <b>65<sup>ème</sup> Gala EPF</b><br> c'est bientôt...</h1>
+        </header>
+        <div id="timer" data-animated="FadeIn">
+          <p id="message"></p>
+          <div id="days" class="timer_box"></div>
+          <div id="hours" class="timer_box"></div>
+          <div id="minutes" class="timer_box"></div>
+          <div id="seconds" class="timer_box"></div>
+        </div>
+        <div class="darkback">
+          <h3>Bonjour et bienvenue à toutes et à tous !</h3>
+          <p>Cette année, le Gala a décidé de se concentrer sur son école. Nous te concoctons une soirée dans laquelle tu pourras te replonger dans tes souvenirs : un retour dans les années peufiennes pour certains et un grand voyage vers l'enfance pour d'autres !</p>
+          <p>Nous t'attendons muni de ton plus bel apparat  pour cette 65<sup>ème</sup> édition du Gala EPF sur le thème "Flash Back".</p>
+          <p>Au programme, le traditionnel défilé des élèves, une remise d'oscars, des hypnotiseurs et bien sûr de la musique tout au long de la soirée !    </p>
+        </div>
+      </div>
+      <!-- NE PAS SUPPRIMER !!!! -->
+      <!-- <div id="layer"></div> -->
+    </section>
+  </div>
+</div>
+
+<div class="featurette" id="teaser">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h1>Le teaser de la soirée</h1>
+        <iframe width="640" height="360" src="http://www.youtube.com/embed/PkWpXeM95Uo" frameborder="0" allowfullscreen></iframe>
+      </div>
     </div>
   </div>
-  <!-- NE PAS SUPPRIMER !!!! -->
-  <!-- <div id="layer"></div> -->
-</section>
-</div>
 </div>
 
 <div class="gallery" id="programme">
@@ -277,85 +289,85 @@
 
 <?php
 
-	require_once('include/config-bdd.php');
+require_once('include/config-bdd.php');
 
-	$requeteCandidats = $bdd->prepare(
-		"SELECT c.*, COUNT(v.id) AS nbVote
-		FROM `candidat` AS c
-		LEFT JOIN `vote` AS v
-		ON c.id = v.id_candidat
-		AND v.id_categorie = :categorie
-		GROUP BY c.id
-		ORDER BY nbVote DESC");
+$requeteCandidats = $bdd->prepare(
+  "SELECT c.*, COUNT(v.id) AS nbVote
+  FROM `candidat` AS c
+  LEFT JOIN `vote` AS v
+  ON c.id = v.id_candidat
+  AND v.id_categorie = :categorie
+  GROUP BY c.id
+  ORDER BY nbVote DESC");
 
-	$requeteVote = $bdd->prepare(
-		"SELECT *
-		FROM `vote`
-		WHERE id_categorie = :categorie
-		AND ip = :ip
-		AND DATEDIFF(NOW(), `time`) < 1");
+$requeteVote = $bdd->prepare(
+  "SELECT *
+  FROM `vote`
+  WHERE id_categorie = :categorie
+  AND ip = :ip
+  AND DATEDIFF(NOW(), `time`) < 1");
 
-	$requete = $bdd->prepare(
-		"SELECT *
-		FROM `categorie`");
-	$requete->execute();
-	$categories = $requete->fetchAll(PDO::FETCH_ASSOC);
+$requete = $bdd->prepare(
+  "SELECT *
+  FROM `categorie`");
+$requete->execute();
+$categories = $requete->fetchAll(PDO::FETCH_ASSOC);
 
-	?>
-	<div class="featurette elec" id="elections">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12 text-center">
-					<h1>Election des diplomés</h1>
-					<h2>Les catégories</h2>
-				</div>
-			</div>
-			<div class="row">
-				<?php foreach ($categories as $categorie) : ?>
-					<div class="col-md-2 text-center">
-						<div class="featurette-item">
-							<i class="fa fa-question"></i>
-							<h4><?php echo $categorie['nom']; ?></h4>
-							<a href="#collapseCat<?php echo $categorie['id']; ?>" data-toggle="collapse" class="span-vote" data-parent="#accordionVote" aria-expanded="true" aria-controls="collapseCat<?php echo $categorie['id']; ?>">Afficher</a>
-						</div>
-					</div>
-				<?php endforeach; ?>
-			</div>
-			<div class="col-sm-12" align="center">
-				<div class="panel-group" id="accordionVote" role="tablist" aria-multiselectable="true" style="margin-bottom:0;">
-					<?php foreach ($categories as $categorie) : ?>
-						<?php $requeteCandidats->execute(array(':categorie'=>$categorie['id'])); ?>
-						<?php $candidats = $requeteCandidats->fetchAll(PDO::FETCH_ASSOC); ?>
-						<div class="panel panel-default" style="border:0; background-color:transparent;">
-							<div id="collapseCat<?php echo $categorie['id']; ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingCat<?php echo $categorie['id']; ?>">
-								<div class="panel-body">
-									<h2><?php echo strip_tags($categorie['nom']); ?></h2>
-									<?php foreach ($candidats as $candidat) : ?>
-										<div class="col-md-2 text-center">
-											<div class="featurette-item">
-												<img class="img-circle grayscale" src="img/candidats/<?php echo $candidat['avatar']; ?>" width="150px" height="150px" />
-												<h4><?php echo $candidat['nom']; ?></h4>
-												Score: <?php echo $candidat['nbVote']; ?>
-												<?php $requeteVote->execute(array(':categorie'=>$categorie['id'], ':ip'=>$_SERVER['REMOTE_ADDR'])); ?>
-												<?php if($result = $requeteVote->fetch(PDO::FETCH_ASSOC)) : ?>
-													Déjà voté
-												<?php else : ?>
-													<form action="vote.php" method="POST" role="form">
-														<input type="hidden" name="categorie" value="<?php echo $categorie['id']; ?>" />
-														<button type="submit" name="candidat" value="<?php echo $candidat['id']?>" class="btn btn-info btn-xs">Voter</button>
-													</form>
-												<?php endif; ?>
-											</div>
-										</div>
-									<?php endforeach; ?>
-								</div>
-							</div>
-						</div>
-					<?php endforeach; ?>
-				</div>
-			</div>
-		</div>
-	</div>
+?>
+<div class="featurette elec" id="elections">
+  <div class="container">
+   <div class="row">
+    <div class="col-md-12 text-center">
+     <h1>Election des diplomés</h1>
+     <h2>Les catégories</h2>
+   </div>
+ </div>
+ <div class="row">
+  <?php foreach ($categories as $categorie) : ?>
+   <div class="col-md-2 text-center">
+    <div class="featurette-item">
+     <i class="fa fa-question"></i>
+     <h4><?php echo $categorie['nom']; ?></h4>
+     <a href="#collapseCat<?php echo $categorie['id']; ?>" data-toggle="collapse" class="span-vote" data-parent="#accordionVote" aria-expanded="true" aria-controls="collapseCat<?php echo $categorie['id']; ?>">Afficher</a>
+   </div>
+ </div>
+<?php endforeach; ?>
+</div>
+<div class="col-sm-12" align="center">
+  <div class="panel-group" id="accordionVote" role="tablist" aria-multiselectable="true" style="margin-bottom:0;">
+   <?php foreach ($categories as $categorie) : ?>
+    <?php $requeteCandidats->execute(array(':categorie'=>$categorie['id'])); ?>
+    <?php $candidats = $requeteCandidats->fetchAll(PDO::FETCH_ASSOC); ?>
+    <div class="panel panel-default" style="border:0; background-color:transparent;">
+     <div id="collapseCat<?php echo $categorie['id']; ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingCat<?php echo $categorie['id']; ?>">
+      <div class="panel-body">
+       <h2><?php echo strip_tags($categorie['nom']); ?></h2>
+       <?php foreach ($candidats as $candidat) : ?>
+        <div class="col-md-2 text-center">
+         <div class="featurette-item">
+          <img class="img-circle grayscale" src="img/candidats/<?php echo $candidat['avatar']; ?>" width="150px" height="150px" />
+          <h4><?php echo $candidat['nom']; ?></h4>
+          Score: <?php echo $candidat['nbVote']; ?>
+          <?php $requeteVote->execute(array(':categorie'=>$categorie['id'], ':ip'=>$_SERVER['REMOTE_ADDR'])); ?>
+          <?php if($result = $requeteVote->fetch(PDO::FETCH_ASSOC)) : ?>
+           Déjà voté
+         <?php else : ?>
+           <form action="vote.php" method="POST" role="form">
+            <input type="hidden" name="categorie" value="<?php echo $categorie['id']; ?>" />
+            <button type="submit" name="candidat" value="<?php echo $candidat['id']?>" class="btn btn-info btn-xs">Voter</button>
+          </form>
+        <?php endif; ?>
+      </div>
+    </div>
+  <?php endforeach; ?>
+</div>
+</div>
+</div>
+<?php endforeach; ?>
+</div>
+</div>
+</div>
+</div>
 
 <div class="callout" id="contact">
   <div class="container">
