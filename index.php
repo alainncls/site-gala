@@ -81,7 +81,9 @@
           <h3>Bonjour et bienvenue à toutes et à tous !</h3>
           <p>Cette année, le Gala a décidé de se concentrer sur son école. Nous te concoctons une soirée dans laquelle tu pourras te replonger dans tes souvenirs : un retour dans les années peufiennes pour certains et un grand voyage vers l'enfance pour d'autres !</p>
           <p>Nous t'attendons muni de ton plus bel apparat  pour cette 65<sup>ème</sup> édition du Gala EPF sur le thème "Flash Back".</p>
-          <p>Au programme, le traditionnel défilé des élèves, une remise d'oscars, des hypnotiseurs et bien sûr de la musique tout au long de la soirée !    </p>
+          <p>Au programme, le traditionnel défilé des élèves, une remise d'oscars, des hypnotiseurs et bien sûr de la musique tout au long de la soirée !</p>
+
+          <h3>Il ne reste que 3 tables VIP et 150 places normales !</h3>
         </div>
       </div>
       <!-- NE PAS SUPPRIMER !!!! -->
@@ -292,13 +294,9 @@
 require_once('include/config-bdd.php');
 
 $requeteCandidats = $bdd->prepare(
-  "SELECT c.*, COUNT(v.id) AS nbVote
+  "SELECT c.*
   FROM `candidat` AS c
-  LEFT JOIN `vote` AS v
-  ON c.id = v.id_candidat
-  AND v.id_categorie = :categorie
-  GROUP BY c.id
-  ORDER BY nbVote DESC");
+  ORDER BY nom");
 
 $requeteVote = $bdd->prepare(
   "SELECT *
@@ -347,10 +345,9 @@ $categories = $requete->fetchAll(PDO::FETCH_ASSOC);
          <div class="featurette-item">
           <img class="img-circle grayscale" src="img/candidats/<?php echo $candidat['avatar']; ?>" width="150px" height="150px" />
           <h4><?php echo $candidat['nom']; ?></h4>
-          Score: <?php echo $candidat['nbVote']; ?>
           <?php $requeteVote->execute(array(':categorie'=>$categorie['id'], ':ip'=>$_SERVER['REMOTE_ADDR'])); ?>
           <?php if($result = $requeteVote->fetch(PDO::FETCH_ASSOC)) : ?>
-           Déjà voté
+           1 seul vote  / jour !
          <?php else : ?>
            <form action="vote.php" method="POST" role="form">
             <input type="hidden" name="categorie" value="<?php echo $categorie['id']; ?>" />
