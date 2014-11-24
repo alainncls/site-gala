@@ -83,7 +83,7 @@
 						<p>Nous t'attendons muni de ton plus bel apparat  pour cette 65<sup>ème</sup> édition du Gala EPF sur le thème "Flash Back".</p>
 						<p>Au programme, le traditionnel défilé des élèves, une remise d'oscars, des hypnotiseurs et bien sûr de la musique tout au long de la soirée !</p>
 
-						<h3>Il ne reste que 3 tables VIP et 150 places normales !</h3>
+						<h3>ATTENTION ! Il ne reste que 2 tables VIP et 50 places normales !</h3>
 					</div>
 				</div>
 				<!-- NE PAS SUPPRIMER !!!! -->
