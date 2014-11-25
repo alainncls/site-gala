@@ -340,23 +340,29 @@
 							<div id="collapseCat<?php echo $categorie['id']; ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingCat<?php echo $categorie['id']; ?>">
 								<div class="panel-body">
 									<h2><?php echo strip_tags($categorie['nom']); ?></h2>
-									<?php foreach ($candidats as $candidat) : ?>
-										<div class="col-md-2 text-center">
-											<div class="featurette-item">
-												<img class="img-circle grayscale" src="img/candidats/<?php echo $candidat['avatar']; ?>" width="150px" height="150px" />
-												<h4><?php echo $candidat['nom']; ?></h4>
-												<?php $requeteVote->execute(array(':categorie'=>$categorie['id'], ':ip'=>$_SERVER['REMOTE_ADDR'])); ?>
-												<?php if($result = $requeteVote->fetch(PDO::FETCH_ASSOC)) : ?>
-													1 seul vote  / jour !
-												<?php else : ?>
-													<form action="vote.php" method="POST" role="form">
-														<input type="hidden" name="categorie" value="<?php echo $categorie['id']; ?>" />
-														<button type="submit" name="candidat" value="<?php echo $candidat['id']?>" class="btn btn-info btn-xs">Voter</button>
-													</form>
-												<?php endif; ?>
+									<div class='row'>
+									<?php foreach ($candidats as $key => $candidat) : ?>
+											<?php if($key%6==0 && $key!=0) :?>
 											</div>
-										</div>
-									<?php endforeach; ?>
+											<div class='row'>
+											<?php endif; ?>
+											<div class="col-md-2 text-center">
+												<div class="featurette-item">
+													<img class="img-circle grayscale" src="img/candidats/<?php echo $candidat['avatar']; ?>" width="150px" height="150px" />
+													<h4><?php echo $candidat['nom']; ?></h4>
+													<?php $requeteVote->execute(array(':categorie'=>$categorie['id'], ':ip'=>$_SERVER['REMOTE_ADDR'])); ?>
+													<?php if($result = $requeteVote->fetch(PDO::FETCH_ASSOC)) : ?>
+														1 seul vote  / jour !
+													<?php else : ?>
+														<form action="vote.php" method="POST" role="form">
+															<input type="hidden" name="categorie" value="<?php echo $categorie['id']; ?>" />
+															<button type="submit" name="candidat" value="<?php echo $candidat['id']?>" class="btn btn-info btn-xs">Voter</button>
+														</form>
+													<?php endif; ?>
+												</div>
+											</div>
+										<?php endforeach; ?>
+									</div>
 								</div>
 							</div>
 						</div>
