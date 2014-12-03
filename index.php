@@ -83,7 +83,7 @@
 						<p>Nous t'attendons muni de ton plus bel apparat  pour cette 65<sup>ème</sup> édition du Gala EPF sur le thème "Flash Back".</p>
 						<p>Au programme, le traditionnel défilé des élèves, une remise d'oscars, des hypnotiseurs et bien sûr de la musique tout au long de la soirée !</p>
 
-						<h3>ATTENTION ! Il ne reste que 2 tables VIP et 10 places normales !</h3>
+						<h3>ATTENTION ! Le Gala est complet ! Vous pouvez encore réserver deux tables VIP !</h3>
 					</div>
 				</div>
 				<!-- NE PAS SUPPRIMER !!!! -->
@@ -190,7 +190,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12 text-center">
-					<h1>Acheter des places en ligne</h1>
+					<h1>Acheter des places en ligne - Complet !</h1>
 					<a href="http://www.buypacker.com/billetterie/offre/33356-u-gala-epf-2014" target="_blank"><img alt="Logo Buypacker" class="buy" src="img/logo_buypacker.png" width="100%" style="max-width:500px;" /></a>
 				</div>
 			</div>
@@ -318,6 +318,7 @@
 				<div class="col-md-12 text-center">
 					<h1>Election des diplomés</h1>
 					<h2>Les catégories</h2>
+
 				</div>
 			</div>
 			<div class="row">
@@ -326,12 +327,12 @@
 						<div class="featurette-item">
 							<i class="fa fa-question"></i>
 							<h4><?php echo $categorie['nom']; ?></h4>
-							<a href="#collapseCat<?php echo $categorie['id']; ?>" data-toggle="collapse" class="span-vote" data-parent="#accordionVote" aria-expanded="true" aria-controls="collapseCat<?php echo $categorie['id']; ?>">Afficher</a>
-						</div>
+<!-- 							<a href="#collapseCat<?php echo $categorie['id']; ?>" data-toggle="collapse" class="span-vote" data-parent="#accordionVote" aria-expanded="true" aria-controls="collapseCat<?php echo $categorie['id']; ?>">Afficher</a>
+ -->						</div>
 					</div>
 				<?php endforeach; ?>
 			</div>
-			<div class="col-sm-12" align="center">
+<!-- 			<div class="col-sm-12" align="center">
 				<div class="panel-group" id="accordionVote" role="tablist" aria-multiselectable="true" style="margin-bottom:0;">
 					<?php foreach ($categories as $categorie) : ?>
 						<?php $requeteCandidats->execute(array(':categorie'=>$categorie['id'])); ?>
@@ -368,6 +369,10 @@
 						</div>
 					<?php endforeach; ?>
 				</div>
+			</div> -->
+			<div class="row text-center">
+				<h2>Les votes sont désormais terminés !</h2>
+				<h2>Résultats et remise des prix pendant la soirée !</h2>
 			</div>
 		</div>
 	</div>
